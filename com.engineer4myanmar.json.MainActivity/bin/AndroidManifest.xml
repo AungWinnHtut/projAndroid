@@ -36,6 +36,20 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.engineer4myanmar.json.MainActivity" />
         </activity>
+        <activity
+            android:name=".WelcomeActivity"
+            android:label="@string/title_activity_welcome" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.engineer4myanmar.json.MainActivity" />
+        </activity>
+        <activity
+            android:name=".SearchActivity"
+            android:label="@string/title_activity_search" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.engineer4myanmar.json.WelcomeActivity" />
+        </activity>
     </application>
 
 </manifest>

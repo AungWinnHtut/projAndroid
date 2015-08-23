@@ -132,7 +132,7 @@ public class MainActivity extends Activity {
 								Toast.LENGTH_SHORT).show();
 						Log.i("JSON", "Login Successfully");
 						Intent intent = new Intent(getApplicationContext(),
-								ServicesMenu.class);
+								WelcomeActivity.class);
 						intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 						user_status = 0;
 						password_status = 0;
