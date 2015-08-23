@@ -3436,3 +3436,9 @@ Binding(CTRL+SHIFT+\,
 
 !ENTRY com.android.ide.eclipse.adt 4 0 2015-08-23 17:17:00.642
 !MESSAGE Warning: Ignoring name conflict in resource file for name menu_settings
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2015-08-23 17:32:11.391
+!MESSAGE activity_search.xml: Couldn't resolve resource @array/country_arrays
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2015-08-23 17:32:11.412
+!MESSAGE activity_search.xml: Couldn't resolve resource @string/country_prompt

@@ -9,7 +9,10 @@ package com.engineer4myanmar.json;
 
 public final class R {
     public static final class array {
-        public static final int country_arrays=0x7f050000;
+        public static final int cuisine_arrays=0x7f050002;
+        public static final int range_arrays=0x7f050003;
+        public static final int ratings_arrays=0x7f050001;
+        public static final int services_arrays=0x7f050000;
     }
     public static final class attr {
     }
@@ -22,7 +25,7 @@ public final class R {
     public static final class id {
         public static final int btnLogin=0x7f080002;
         public static final int btnRegister=0x7f080003;
-        public static final int btnSearch=0x7f080010;
+        public static final int btnSearch=0x7f080011;
         public static final int etCity=0x7f08000f;
         public static final int etDob=0x7f08000b;
         public static final int etEmail=0x7f080007;
@@ -30,7 +33,8 @@ public final class R {
         public static final int etPhoneno=0x7f080009;
         public static final int etProfession=0x7f08000d;
         public static final int etUsername=0x7f080000;
-        public static final int menu_settings=0x7f080011;
+        public static final int menu_settings=0x7f080012;
+        public static final int spinner1=0x7f080010;
         public static final int textView1=0x7f080004;
         public static final int textView2=0x7f080005;
         public static final int textView3=0x7f080006;
@@ -55,8 +59,12 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f040000;
+        public static final int cuisine_prompt=0x7f04000a;
         public static final int hello_world=0x7f040001;
         public static final int menu_settings=0x7f040002;
+        public static final int range_prompt=0x7f04000b;
+        public static final int rating_prompt=0x7f040009;
+        public static final int services_prompt=0x7f040008;
         public static final int title_activity_main=0x7f040003;
         public static final int title_activity_register=0x7f040005;
         public static final int title_activity_search=0x7f040007;
