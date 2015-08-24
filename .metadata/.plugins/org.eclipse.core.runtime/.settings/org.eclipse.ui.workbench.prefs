@@ -1,0 +1,8 @@
+ColorsAndFontsPreferencePage.expandedCategories=Torg.eclipse.ui.workbenchMisc
+ColorsAndFontsPreferencePage.selectedElement=Forg.eclipse.jface.textfont
+eclipse.preferences.version=1
+org.eclipse.jface.bannerfont=1|Zawgyi-One|15.75|1|WINDOWS|1|-21|0|0|0|700|0|0|0|0|3|2|1|34|Zawgyi-One;
+org.eclipse.jface.dialogfont=1|Zawgyi-One|14.25|0|WINDOWS|1|-19|0|0|0|400|0|0|0|0|3|2|1|34|Zawgyi-One;
+org.eclipse.jface.headerfont=1|Zawgyi-One|14.25|1|WINDOWS|1|-19|0|0|0|700|0|0|0|0|3|2|1|34|Zawgyi-One;
+org.eclipse.jface.textfont=1|Zawgyi-One|14.25|0|WINDOWS|1|-19|0|0|0|400|0|0|0|0|3|2|1|34|Zawgyi-One;
+org.eclipse.ui.workbench.texteditor.blockSelectionModeFont=1|Zawgyi-One|14.25|0|WINDOWS|1|-19|0|0|0|400|0|0|0|0|3|2|1|34|Zawgyi-One;
