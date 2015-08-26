@@ -16,6 +16,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,67 +30,53 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.entity.StringEntity;
 
 public class SearchActivity extends Activity {
-	public static  String ipaddress1= "192.168.1.100";
+	public static String ipaddress1 = "192.168.1.100";
 
 	Person person = null;
-	//////////////////////////
-	// to delete
-	/////////////////////////
-	EditText etUsername;
-	EditText etPassword;
-	EditText etEmail;
-	EditText etPhoneno;
-	EditText etDob;
-	EditText etProfession;
-	EditText etCity;
-	EditText etServer;
-
-	String input_username = "";
-	String input_password = "";
-	String input_email = "";
-	String input_phoneno = "";
-	String input_dob = "";
-	String input_profession = "";
-	String input_city = "";	
-	//////////////////////////////////
 	Spinner spServices;
 	Spinner spRange;
 	Spinner spRating;
 	EditText etMin;
 	EditText etMax;
 	Spinner spCuisine;
-	
-	String input_services="";
-	String input_range="";
-	String input_rating="";
-	String input_min="";
-	String input_max="";
+
+	String input_services = "";
+	String input_range = "";
+	String input_rating = "";
+	String input_min = "";
+	String input_max = "";
 	String input_cuisine;
+	String sjson = "";
 
 	JSONObject jObj;
 	JSONParser jsonParser = new JSONParser();
-	
+
 	// change here your ip/folder/php
-	private static String url_search = "http://"+ipaddress1+"/esdb/search2.php";
+	private static String url_search = "http://" + ipaddress1
+			+ "/esdb/search2.php";
+
+	final ArrayList<String> Alist = new ArrayList<String>();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_register);
-		
-		spServices=(Spinner)findViewById(R.id.spServices);
-		spRange=(Spinner)findViewById(R.id.spRange);
-		spRating=(Spinner)findViewById(R.id.spRating);
-		etMin=(EditText)findViewById(R.id.etMin);
-		etMax=(EditText)findViewById(R.id.etMax);
-		spCuisine=(Spinner)findViewById(R.id.spCuisine);
+		setContentView(R.layout.activity_search);
+
+		spServices = (Spinner) findViewById(R.id.spServices);
+		spRange = (Spinner) findViewById(R.id.spRange);
+		spRating = (Spinner) findViewById(R.id.spRating);
+		etMin = (EditText) findViewById(R.id.etMin);
+		etMax = (EditText) findViewById(R.id.etMax);
+		spCuisine = (Spinner) findViewById(R.id.spCuisine);
 	}
 
-	private class HttpAsyncTask extends AsyncTask<String, String, String> {
+	private class HttpAsyncTaskSearch extends AsyncTask<String, String, String> {
 		JSONObject json = null;
 
 		@Override
@@ -97,40 +84,48 @@ public class SearchActivity extends Activity {
 
 			InputStream is = null;
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
-			
-			input_services=String.valueOf(spServices.getSelectedItem());
-			input_range=String.valueOf(spRange.getSelectedItem());
-			input_rating=String.valueOf(spRating.getSelectedItem());
-			input_cuisine=String.valueOf(spCuisine.getSelectedItem());
-			input_min=etMin.getText().toString();
-			input_max=etMax.getText().toString();
-			
-			//ipaddress = etServer.getText().toString();
-			if (input_services.equals("") || input_range.equals("")||input_rating.equals("") || 
-					input_cuisine.equals("") || input_min.equals("")||input_max.equals("")) {				
+
+			input_services = String.valueOf(spServices.getSelectedItem());
+			input_range = String.valueOf(spRange.getSelectedItem());
+			input_rating = String.valueOf(spRating.getSelectedItem());
+			input_cuisine = String.valueOf(spCuisine.getSelectedItem());
+			input_min = etMin.getText().toString();
+			input_max = etMax.getText().toString();
+
+			// ipaddress = etServer.getText().toString();
+			if (input_services.equals("") || input_range.equals("")
+					|| input_rating.equals("") || input_cuisine.equals("")
+					|| input_min.equals("") || input_max.equals("")) {
 				return null;
 			} else {
 				params.add(new BasicNameValuePair("catalog", input_services));
 				params.add(new BasicNameValuePair("rating", input_rating));
-				params.add(new BasicNameValuePair("p1",
-						input_min));
+				params.add(new BasicNameValuePair("p1", input_min));
 				params.add(new BasicNameValuePair("p2", input_max));
 				params.add(new BasicNameValuePair("cuisine", input_cuisine));
-				params.add(new BasicNameValuePair("range",
-						input_range));
-				
+				params.add(new BasicNameValuePair("range", input_range));
+
 				// getting JSON Object
 				try {
 					// json = jsonParser.makeHttpRequest(url_register,
 					// "POST",params);
-					url_search="http://"+ipaddress1+"/esdb/search2.php";
+					url_search = "http://" + ipaddress1 + "/esdb/search2.php";
 					DefaultHttpClient httpClient = new DefaultHttpClient();
-					HttpPost httpPost = new HttpPost(url_search);
-					httpPost.setEntity(new UrlEncodedFormEntity(params));
-					HttpResponse httpResponse = httpClient.execute(httpPost);
+					String paramString = URLEncodedUtils
+							.format(params, "utf-8");
+					url_search += "?" + paramString;
+					Log.d("json url", url_search);
+					HttpGet httpGet = new HttpGet(url_search);
+					// //////////////////////
+					HttpResponse httpResponse = httpClient.execute(httpGet);
 					HttpEntity httpEntity = httpResponse.getEntity();
 					is = httpEntity.getContent();
-					Log.d("JSON", is.toString());
+					if (is.toString().equals(null)) {
+						Log.d("JSON is string", "is is null");
+					} else {
+						Log.d("JSON is string", is.toString());
+					}
+
 					BufferedReader reader = new BufferedReader(
 							new InputStreamReader(is, "iso-8859-1"), 8);
 					StringBuilder sb = new StringBuilder();
@@ -141,23 +136,14 @@ public class SearchActivity extends Activity {
 					}
 					Log.d("JSON", sb.toString());
 					is.close();
-					String sjson = sb.toString();
-
-					try {
-						jObj = new JSONObject(sjson);
-						json = jObj;
-						
-					} catch (JSONException e) {
-						Log.e("JSON Parser",
-								"Error parsing data " + e.toString() + "   "
-										+ params.toString() + "+++ " + sjson);
-					}
+					sjson = sb.toString();
 
 				} catch (Exception e) {
 					Log.e("parser error", e.toString());
 				}
-				Log.d("Create Response", json.toString());
+				Log.d("Create Response", sjson);
 
+				// //////////////////////////////////////
 				// check for success tag
 				try {
 					int success = json.getInt("success");
@@ -169,9 +155,9 @@ public class SearchActivity extends Activity {
 				} catch (Exception e) {
 					Log.d("Success", "not OK " + e.toString());
 				}
-
+				Log.d("jsonstring", sjson);
 				// return neull;
-				return jObj.toString();
+				return sjson;
 				// return POST(urls[0],person);
 			}
 		}
@@ -179,27 +165,25 @@ public class SearchActivity extends Activity {
 		// onPostExecute displays the results of the AsyncTask.
 		@Override
 		protected void onPostExecute(String result) {
-		
-			try{
-				if(result.equals(null))
-				{
-					Toast.makeText(getBaseContext(), "'"+ result+"'",Toast.LENGTH_LONG).show();
+			try {
+				if (result.equals(null)) {
+					Toast.makeText(getBaseContext(), "'" + result + "'",
+							Toast.LENGTH_LONG).show();
+				} else {
+					Toast.makeText(getBaseContext(),
+							"Data successfully send to server!!!",
+							Toast.LENGTH_LONG).show();
+
 				}
-				else
-				{
-					Toast.makeText(getBaseContext(), "Data successfully send to server!!!",Toast.LENGTH_LONG).show();
-				}
-					
-			}catch(Exception e)
-			{
-				Log.e("JSON",e.toString());
-				Toast.makeText(getBaseContext(), "Data cannot be send! Please fill the required fields !!!",Toast.LENGTH_LONG).show();
+
+			} catch (Exception e) {
+				Log.e("JSON postExe", e.toString());
+				Toast.makeText(
+						getBaseContext(),
+						"Data cannot be send! Please fill the required fields !!!",
+						Toast.LENGTH_LONG).show();
 			}
-			
-			
-			
-			
-			
+
 		}
 	}
 
@@ -218,9 +202,9 @@ public class SearchActivity extends Activity {
 
 	}
 
-	public void funRegister(View v) {
+	public void funSearchNow(View v) {
 		// new registerJSONdbTask().execute(url_register);
-		new HttpAsyncTask().execute(url_search);
+		new HttpAsyncTaskSearch().execute(url_search);
 	}
-}
 
+}

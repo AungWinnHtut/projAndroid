@@ -32,10 +32,8 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 
 public class RegisterActivity extends Activity {
-	public static  String ipaddress1= "192.168.1.100";
-
 	Person person = null;
-	
+
 	EditText etUsername;
 	EditText etPassword;
 	EditText etEmail;
@@ -43,7 +41,6 @@ public class RegisterActivity extends Activity {
 	EditText etDob;
 	EditText etProfession;
 	EditText etCity;
-	EditText etServer;
 
 	String input_username = "";
 	String input_password = "";
@@ -55,9 +52,9 @@ public class RegisterActivity extends Activity {
 
 	JSONObject jObj;
 	JSONParser jsonParser = new JSONParser();
-	
+
 	// change here your ip/folder/php
-	private static String url_register = "http://"+ipaddress1+"/esdb/register_user.php";
+	private static String url_register = "http://192.168.1.100/esdb/register_user.php";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -71,7 +68,7 @@ public class RegisterActivity extends Activity {
 		etDob = (EditText) findViewById(R.id.etDob);
 		etProfession = (EditText) findViewById(R.id.etProfession);
 		etCity = (EditText) findViewById(R.id.etCity);
-		//etServer = (EditText)findViewById(R.id.etServer);
+
 	}
 
 	private class HttpAsyncTask extends AsyncTask<String, String, String> {
@@ -90,8 +87,8 @@ public class RegisterActivity extends Activity {
 			input_dob = etDob.getText().toString();
 			input_profession = etProfession.getText().toString();
 			input_city = etCity.getText().toString();
-			//ipaddress = etServer.getText().toString();
-			if (input_username.equals("") || input_password.equals("")||ipaddress1.equals("")) {				
+
+			if (input_username.equals("") || input_password.equals("")) {				
 				return null;
 			} else {
 				params.add(new BasicNameValuePair("user_name", input_username));
@@ -108,7 +105,7 @@ public class RegisterActivity extends Activity {
 				try {
 					// json = jsonParser.makeHttpRequest(url_register,
 					// "POST",params);
-					url_register="http://"+ipaddress1+"/esdb/register_user.php";
+
 					DefaultHttpClient httpClient = new DefaultHttpClient();
 					HttpPost httpPost = new HttpPost(url_register);
 					httpPost.setEntity(new UrlEncodedFormEntity(params));
@@ -187,7 +184,15 @@ public class RegisterActivity extends Activity {
 		}
 	}
 
-	@SuppressWarnings("unused")
+	private boolean validate() {
+		if (etUsername.getText().toString().trim().equals(""))
+			return false;
+		else if (etPassword.getText().toString().trim().equals(""))
+			return false;
+		else
+			return true;
+	}
+
 	private static String convertInputStreamToString(InputStream inputStream)
 			throws IOException {
 		BufferedReader bufferedReader = new BufferedReader(

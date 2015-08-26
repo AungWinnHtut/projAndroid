@@ -7,4 +7,10 @@
 <fullyQualifiedTypeName name="android.content.ActivityNotFoundException"/>
 <fullyQualifiedTypeName name="android.widget.Toast"/>
 <fullyQualifiedTypeName name="android.webkit.WebView"/>
+<fullyQualifiedTypeName name="com.engineer4myanmar.json.WelcomeActivity"/>
+<fullyQualifiedTypeName name="android.widget.Spinner"/>
+<fullyQualifiedTypeName name="com.engineer4myanmar.json.R.id"/>
+<fullyQualifiedTypeName name="org.json.JSONArray"/>
+<fullyQualifiedTypeName name="org.apache.http.client.methods.HttpGet"/>
+<fullyQualifiedTypeName name="org.apache.http.client.utils.URLEncodedUtils"/>
 </qualifiedTypeNameHistroy>
