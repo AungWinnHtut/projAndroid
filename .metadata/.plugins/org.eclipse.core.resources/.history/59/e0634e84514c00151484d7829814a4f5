@@ -63,11 +63,8 @@ public class AdminActivity extends Activity {
 	JSONParser jsonParser = new JSONParser();
 
 	// change here your ip/folder/php
-	private static String url_add="http://192.168.1.100/esdb/add_hotel.php";
-	private static String url_add_hospital = "http://192.168.1.100/esdb/add_hospital.php";
-	private static String url_add_hotel = "http://192.168.1.100/esdb/add_hotel.php";
-	private static String url_add_bank= "http://192.168.1.100/esdb/add_bank.php";
-	private static String url_add_restaurant= "http://192.168.1.100/esdb/add_restaurant.php";
+	private static String url_add = "http://192.168.1.100/esdb/add_hospital.php";
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -128,11 +125,11 @@ public class AdminActivity extends Activity {
 					DefaultHttpClient httpClient = new DefaultHttpClient();
 					switch(spCatalog.getSelectedItemPosition())
 					{
-					case 0:	url_add=url_add_hotel; break;
-					case 1: url_add=url_add_bank; break;
-					case 2: url_add=url_add_restaurant; break;
-					case 3: url_add=url_add_hospital; break;
-						default: Log.e("error catalog","no such index");
+					case 0:	break;
+					case 1: break;
+					case 2: break;
+					case 3: break;
+						default:
 					}
 					HttpPost httpPost = new HttpPost(url_add);
 					httpPost.setEntity(new UrlEncodedFormEntity(params));
