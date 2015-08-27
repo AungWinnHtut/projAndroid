@@ -1,5 +1,8 @@
 package com.engineer4myanmar.json;
 
+import java.net.URL;
+
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -17,11 +20,35 @@ public class WelcomeActivity extends Activity {
 
 	}
 
-	public void funCallSearch(View v) {
+	public void funCallSearch1(View v) {
 		Intent intent = new Intent(getApplicationContext(),
 				SearchActivity.class);
 		// intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
 	}
+	
+	public void funCallSearch(View v) {
+		//Test Here
+	}
+	
+	 private class AsyncTestTask extends AsyncTask<String, String, String> {
+	         
+		 
+		 @Override
+			protected String doInBackground(String... params) {
+				// TODO Auto-generated method stub
+			 
+				return null;
+			}
+		 
+		 
+	     protected void onPostExecute(String s) {
+	        
+	     }
+
+
+
+		
+	 }
 
 }

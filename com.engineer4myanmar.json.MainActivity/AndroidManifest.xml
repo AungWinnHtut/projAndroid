@@ -4,8 +4,8 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="15" />
+        android:minSdkVersion="14"
+        android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -49,6 +49,13 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.engineer4myanmar.json.WelcomeActivity" />
+        </activity>
+        <activity
+            android:name=".AdminActivity"
+            android:label="@string/title_activity_admin" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.engineer4myanmar.json.MainActivity" />
         </activity>
     </application>
 

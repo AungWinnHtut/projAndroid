@@ -187,13 +187,29 @@ public class MainActivity extends Activity {
 	}
 
 	public void funLogin(View v) {
-		new ReadJSONFeedTask()
-				.execute("http://"+ipaddress+"/esdb/get_all_data.php");
+		String iUname = etUsername.getText().toString();
+		String iPass = etPassword.getText().toString();
+		if (iUname.equals("admin") && iPass.equals("admin"))
+		{
+			funAdmin();
+		}
+		else
+		{
+			new ReadJSONFeedTask()
+			.execute("http://"+ipaddress+"/esdb/get_all_data.php");
+		}
+		
 	}
 
 	public void funRegister(View v) {
 		Intent intent = new Intent(getApplicationContext(),
 				RegisterActivity.class);
+		// intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
+	}
+	public void funAdmin() {
+		Intent intent = new Intent(getApplicationContext(),
+				AdminActivity.class);
 		// intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
 	}

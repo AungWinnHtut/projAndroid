@@ -32,13 +32,14 @@
         <item>Burmese</item>
         <item>Japanese</item>
     </string-array>
-    
-      <string-array name="range_arrays">
+    <string-array name="range_arrays">
         <item>1 km</item>
         <item>2 km</item>
         <item>3 km</item>
         <item>4 km</item>
         <item>5 km</item>
     </string-array>
+
+    <string name="title_activity_admin">AdminActivity</string>
 
 </resources>

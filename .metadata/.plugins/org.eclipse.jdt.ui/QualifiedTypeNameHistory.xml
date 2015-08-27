@@ -13,4 +13,5 @@
 <fullyQualifiedTypeName name="org.json.JSONArray"/>
 <fullyQualifiedTypeName name="org.apache.http.client.methods.HttpGet"/>
 <fullyQualifiedTypeName name="org.apache.http.client.utils.URLEncodedUtils"/>
+<fullyQualifiedTypeName name="android.app.ProgressDialog"/>
 </qualifiedTypeNameHistroy>
