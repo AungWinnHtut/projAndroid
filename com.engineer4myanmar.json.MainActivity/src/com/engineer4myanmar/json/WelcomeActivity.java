@@ -20,14 +20,14 @@ public class WelcomeActivity extends Activity {
 
 	}
 
-	public void funCallSearch1(View v) {
+	public void funCallSearch(View v) {
 		Intent intent = new Intent(getApplicationContext(),
 				SearchActivity.class);
 		// intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
 	}
 	
-	public void funCallSearch(View v) {
+	public void funCallSearch1(View v) {
 		//Test Here
 	}
 	
