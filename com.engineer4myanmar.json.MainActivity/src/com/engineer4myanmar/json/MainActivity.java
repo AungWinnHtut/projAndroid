@@ -118,12 +118,12 @@ public class MainActivity extends Activity {
 						}
 
 						//### user-pass testing purpose
-						Toast.makeText(
-								getBaseContext(),
-								String.valueOf(user_id) + " -" + user_name
-										+ "-" + user_password,
-								Toast.LENGTH_SHORT).show();
-						//### user-pass testing end
+					//	Toast.makeText(
+					//			getBaseContext(),
+					//			String.valueOf(user_id) + " -" + user_name
+					//					+ "-" + user_password,
+					//			Toast.LENGTH_SHORT).show();
+					//	//### user-pass testing end
 					}
 
 					if (user_status == 1 && password_status == 1) {

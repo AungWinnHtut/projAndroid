@@ -61,14 +61,15 @@ public class SearchActivity extends Activity {
 
 	JSONObject jObj;
 	JSONParser jsonParser = new JSONParser();
-	ArrayList<HashMap<String, String>> resultList;
+
 	// change here your ip/folder/php
 	private static String url_search = "http://" + ipaddress1
 			+ "/esdb/search3.php";
 
 	private ProgressDialog pDialog;
 	final ArrayList<String> Alist = new ArrayList<String>();
-
+	ArrayList<HashMap<String, String>> resultList = new ArrayList<HashMap<String, String>>();
+	String finalResult="";
 	// ////////////////////////////////////////////////////////////////////
 	@SuppressWarnings("null")
 	public String readJSONFeed(String URL, List<NameValuePair> params) {
@@ -126,7 +127,8 @@ public class SearchActivity extends Activity {
 		spCuisine = (Spinner) findViewById(R.id.spCuisine);
 	}
 
-	private class HttpAsyncTaskSearch extends AsyncTask<String, String, String> {
+	private class HttpAsyncTaskSearch extends AsyncTask<String, String, String>{
+		public AsyncResponse delegate=null;
 		JSONObject json = null;
 		List<NameValuePair> params1 = new ArrayList<NameValuePair>();
 
@@ -144,40 +146,66 @@ public class SearchActivity extends Activity {
 			params1.add(new BasicNameValuePair("p1", input_min));
 			params1.add(new BasicNameValuePair("p2", input_max));
 			params1.add(new BasicNameValuePair("cuisine", input_cuisine));
-
+			if (!resultList.isEmpty()) {
+				resultList.clear();
+			}
 			return readJSONFeed(urls[0], params1);
 		}
 
 		/**
 		 * After completing background task Dismiss the progress dialog
+		 * @return 
+		 * @return 
 		 * **/
-		protected void onPostExecute(String result) {
-
-			JSONArray logins = null;
+		protected  void onPostExecute(String result) {
+			
+			if(!finalResult.isEmpty())
+			{
+				//finalResult="";
+			}
+			finalResult.concat(result);
+			
+			
+			JSONArray resultJsonArray = null;
 			try {
 				JSONObject json = new JSONObject(result);
 				int success = json.getInt("success");
 				if (success == 1) {
-					logins = json.getJSONArray("result");
+					resultJsonArray = json.getJSONArray("result");
 
-					for (int i = 0; i < logins.length(); i++) {
-						JSONObject c = logins.getJSONObject(i);
+					for (int i = 0; i < resultJsonArray.length(); i++) {
+						JSONObject c = resultJsonArray.getJSONObject(i);
 						String info_name = c.getString("info_name");
 						String address = c.getString("address");
 						String phone_no = c.getString("phone_no");
 
+						// creating new HashMap
+						HashMap<String, String> map = new HashMap<String, String>();
+						// adding each child node to HashMap key => value
+
+						map.put("info_name", info_name);
+						map.put("address", address);
+						map.put("phone_no", phone_no);
+						try {
+							resultList.add(map);
+							Log.d("arl error", resultList.toString());
+						} catch (Exception e) {
+							Log.e("arl error", e.toString());
+
+						}
+
 						// ### user-pass testing purpose
-						Toast.makeText(
-								getBaseContext(),
-								info_name+ " -" + address
-										+ "-" + phone_no, Toast.LENGTH_SHORT)
-								.show();
+						// Toast.makeText(
+						// getBaseContext(),
+						// info_name+ " -" + address
+						// + "-" + phone_no, Toast.LENGTH_SHORT)
+						// .show();
 						// ### user-pass testing end
 					}
 
 				} else {
-					Toast.makeText(getBaseContext(), "fail", Toast.LENGTH_SHORT)
-							.show();
+					//Toast.makeText(getBaseContext(), "fail", Toast.LENGTH_SHORT)
+					//		.show();
 					// ### user-pass testing end
 				}
 
@@ -185,9 +213,9 @@ public class SearchActivity extends Activity {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
+			//return result;
 		}
-
+		
 	}
 
 	@SuppressWarnings("unused")
@@ -205,6 +233,7 @@ public class SearchActivity extends Activity {
 	}
 
 	public void funSearchNow(View v) {
+		
 		// new registerJSONdbTask().execute(url_register);
 		input_services = String.valueOf(spServices.getSelectedItem());
 		// Toast.makeText(getApplicationContext(), input_services,
@@ -216,6 +245,25 @@ public class SearchActivity extends Activity {
 		input_max = etMax.getText().toString();
 		Log.d("test fun", "fun running");
 		new HttpAsyncTaskSearch().execute(url_search);
+		Intent intent = new Intent(getApplicationContext(),
+				SearchListActivity.class);
+		//for (int i = 0; i < resultList.size(); i++) {
+		//	Toast.makeText(getApplicationContext(),
+		//			resultList.get(i).get("info_name"), Toast.LENGTH_SHORT)
+		//			.show();
+		//}
+		if(resultList.isEmpty())
+		{
+		Toast.makeText(getApplicationContext(),
+					"no result", Toast.LENGTH_SHORT)
+					.show();
+		}
+		//intent.putExtra("arraylist", resultList);
+		intent.putExtra("string", finalResult);
+		// resultList.clear();
+		startActivity(intent);
 	}
+
+	
 
 }

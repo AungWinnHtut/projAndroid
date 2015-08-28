@@ -1,0 +1,118 @@
+package com.engineer4myanmar.json;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+
+import android.R.fraction;
+import android.os.Bundle;
+import android.app.Activity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.support.v4.app.NavUtils;
+
+public class SearchListActivity extends Activity {
+	ArrayList<HashMap<String, String>> arl=new ArrayList<HashMap<String, String>>();
+	String fResult="";
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		//arl = (ArrayList<HashMap<String, String>>) getIntent()
+		//		.getSerializableExtra("arraylist");
+		fResult= getIntent().getExtras().getString("string");
+		//for (int i = 0; i < arl.size(); i++) {
+		//Toast.makeText(getApplicationContext(), arl.get(i).get("info_name"), Toast.LENGTH_SHORT).show();
+		Toast.makeText(getApplicationContext(), fResult, Toast.LENGTH_LONG).show();
+		//}
+		
+		setContentView(R.layout.activity_search_list);
+		ListView lv = (ListView)findViewById(R.id.lvList);
+		//ListAdapter adapter = new SimpleAdapter(
+		//		this, arl,
+		//		R.layout.list_item, new String[] { "info_name","address","phone_no"},
+		//		new int[] { R.id.info_name, R.id.address,R.id.phone_no });
+		// updating listview
+		funStr2List();
+		//lv.setAdapter(adapter);
+		TextView tv = (TextView)findViewById(R.id.txtTest);
+		tv.setTag(fResult);
+		
+		lv.setOnItemClickListener(new OnItemClickListener() {
+			  public void onItemClick(AdapterView<?> parent, View v, int position,
+					long id) {
+				
+				
+			}
+			}); 
+
+
+	}
+	
+	
+	public void funStr2List()
+	{
+		
+		JSONArray resultJsonArray = null;
+		try {
+			JSONObject json = new JSONObject(fResult);
+			int success = json.getInt("success");
+			if (success == 1) {
+				resultJsonArray = json.getJSONArray("result");
+
+				for (int i = 0; i < resultJsonArray.length(); i++) {
+					JSONObject c = resultJsonArray.getJSONObject(i);
+					String info_name = c.getString("info_name");
+					String address = c.getString("address");
+					String phone_no = c.getString("phone_no");
+
+					// creating new HashMap
+					HashMap<String, String> map = new HashMap<String, String>();
+					// adding each child node to HashMap key => value
+
+					map.put("info_name", info_name);
+					map.put("address", address);
+					map.put("phone_no", phone_no);
+					try {
+						arl.add(map);
+						Log.d("arl error", arl.toString());
+					} catch (Exception e) {
+						Log.e("arl error", e.toString());
+
+					}
+
+					// ### user-pass testing purpose
+					Toast.makeText(
+					getBaseContext(),
+					info_name+ " -" + address
+					+ "-" + phone_no, Toast.LENGTH_SHORT)
+					.show();
+					// ### user-pass testing end
+				}
+
+			} else {
+				//Toast.makeText(getBaseContext(), "fail", Toast.LENGTH_SHORT)
+				//		.show();
+				// ### user-pass testing end
+			}
+
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//return result;
+	}
+	
+}

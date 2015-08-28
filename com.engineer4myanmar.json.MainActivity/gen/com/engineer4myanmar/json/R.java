@@ -23,6 +23,7 @@ public final class R {
         public static final int ic_launcher1=0x7f020003;
     }
     public static final class id {
+        public static final int address=0x7f080029;
         public static final int btnLogin=0x7f080018;
         public static final int btnRegister=0x7f080019;
         public static final int btnSearch=0x7f080025;
@@ -45,7 +46,10 @@ public final class R {
         public static final int etRating=0x7f08000b;
         public static final int etUrl=0x7f080009;
         public static final int etUsername=0x7f080016;
-        public static final int menu_settings=0x7f080026;
+        public static final int info_name=0x7f080028;
+        public static final int lvList=0x7f080027;
+        public static final int menu_settings=0x7f08002b;
+        public static final int phone_no=0x7f08002a;
         public static final int scrollView1=0x7f080000;
         public static final int spCatalog=0x7f080001;
         public static final int spCuisine=0x7f080024;
@@ -62,22 +66,28 @@ public final class R {
         public static final int textView7=0x7f08000e;
         public static final int textView8=0x7f080012;
         public static final int textView9=0x7f080014;
+        public static final int txtTest=0x7f080026;
     }
     public static final class layout {
         public static final int activity_admin=0x7f030000;
         public static final int activity_main=0x7f030001;
         public static final int activity_register=0x7f030002;
         public static final int activity_search=0x7f030003;
-        public static final int activity_services_menu=0x7f030004;
-        public static final int activity_welcome=0x7f030005;
+        public static final int activity_search2=0x7f030004;
+        public static final int activity_search_list=0x7f030005;
+        public static final int activity_services_menu=0x7f030006;
+        public static final int activity_welcome=0x7f030007;
+        public static final int list_item=0x7f030008;
     }
     public static final class menu {
         public static final int activity_admin=0x7f070000;
         public static final int activity_main=0x7f070001;
         public static final int activity_register=0x7f070002;
         public static final int activity_search=0x7f070003;
-        public static final int activity_services_menu=0x7f070004;
-        public static final int activity_welcome=0x7f070005;
+        public static final int activity_search2=0x7f070004;
+        public static final int activity_search_list=0x7f070005;
+        public static final int activity_services_menu=0x7f070006;
+        public static final int activity_welcome=0x7f070007;
     }
     public static final class string {
         public static final int app_name=0x7f040000;
@@ -91,6 +101,8 @@ public final class R {
         public static final int title_activity_main=0x7f040003;
         public static final int title_activity_register=0x7f040005;
         public static final int title_activity_search=0x7f040007;
+        public static final int title_activity_search2=0x7f04000e;
+        public static final int title_activity_search_list=0x7f04000d;
         public static final int title_activity_services_menu=0x7f040004;
         public static final int title_activity_welcome=0x7f040006;
     }

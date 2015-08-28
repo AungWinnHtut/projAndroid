@@ -22,7 +22,7 @@ public class WelcomeActivity extends Activity {
 
 	public void funCallSearch(View v) {
 		Intent intent = new Intent(getApplicationContext(),
-				SearchActivity.class);
+				Search2Activity.class);
 		// intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
 	}

@@ -41,5 +41,7 @@
     </string-array>
 
     <string name="title_activity_admin">AdminActivity</string>
+    <string name="title_activity_search_list">SearchListActivity</string>
+    <string name="title_activity_search2">Search2Activity</string>
 
 </resources>
