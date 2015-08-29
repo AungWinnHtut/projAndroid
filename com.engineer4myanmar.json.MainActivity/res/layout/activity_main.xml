@@ -52,5 +52,14 @@
         android:onClick="funRegister"
         android:background="#0099cc"
         android:text="Register" />
+    <Button
+        android:id="@+id/btnGPS"
+       android:layout_width="250dp"
+        android:layout_height="wrap_content"
+       android:layout_gravity="center"       
+        android:layout_marginTop="36dp"
+        android:onClick="funGPSon"
+        android:background="#0099cc"
+        android:text="GPS on" />
 
 </LinearLayout>

@@ -298,6 +298,10 @@ private class HttpAsyncTaskSearch extends AsyncTask<String, String, String>{
 		new HttpAsyncTaskSearch().execute(url_search);
 		
 	}
+	public void unMapView(View v)
+	{
+		
+	}
    
 
   

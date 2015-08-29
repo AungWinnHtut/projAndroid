@@ -27,10 +27,7 @@ public class WelcomeActivity extends Activity {
 		startActivity(intent);
 	}
 	
-	public void funCallSearch1(View v) {
-		//Test Here
-	}
-	
+		
 	 private class AsyncTestTask extends AsyncTask<String, String, String> {
 	         
 		 
