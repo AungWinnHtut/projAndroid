@@ -81,8 +81,8 @@ public class GPSActivity extends Activity implements LocationListener {
   }
 
   public void onLocationChanged(Location location) {
-    double lat =  (location.getLatitude());
-    double lng =  (location.getLongitude());
+    int lat = (int) (location.getLatitude());
+    int lng = (int) (location.getLongitude());
     latituteField.setText(String.valueOf(lat));
     longitudeField.setText(String.valueOf(lng));
   }

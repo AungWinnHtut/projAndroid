@@ -65,7 +65,7 @@
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="funGetLoc"
+        android:onClick="funGetLoc()"
         android:text="Get Googleloc" />
 
 </LinearLayout> 
