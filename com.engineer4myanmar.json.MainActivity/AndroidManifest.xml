@@ -71,6 +71,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.engineer4myanmar.json.WelcomeActivity" />
         </activity>
+        <activity
+            android:name=".DetailActivity"
+            android:label="@string/title_activity_detail" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.engineer4myanmar.json.SearchListActivity" />
+        </activity>
     </application>
 
 </manifest>

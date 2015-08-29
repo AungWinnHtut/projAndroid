@@ -22,9 +22,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
-
-
 import android.R.fraction;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -153,7 +150,11 @@ public class SearchListActivity extends Activity {
 						// getting values from selected ListItem
 						String infoname= ((TextView) view.findViewById(R.id.info_name)).getText()
 								.toString();
-						Toast.makeText(getApplicationContext(),infoname, Toast.LENGTH_SHORT).show();						
+						//Toast.makeText(getApplicationContext(),infoname, Toast.LENGTH_SHORT).show();				
+						Intent intent = new Intent(getApplicationContext(),
+						DetailActivity.class);			
+						intent.putExtra("infoname",infoname);		
+						startActivity(intent);
 					}
 				});
 

@@ -4501,3 +4501,9 @@ java.lang.NullPointerException: returnTypeReference is mandatory
 
 !ENTRY com.android.ide.eclipse.adt 4 0 2015-08-28 15:15:14.924
 !MESSAGE Warning: Ignoring name conflict in resource file for name menu_settings
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2015-08-28 16:49:34.853
+!MESSAGE Warning: Ignoring name conflict in resource file for name hello_world
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2015-08-28 16:49:34.853
+!MESSAGE Warning: Ignoring name conflict in resource file for name menu_settings
