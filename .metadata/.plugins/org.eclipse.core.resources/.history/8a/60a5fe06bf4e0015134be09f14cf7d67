@@ -12,7 +12,7 @@
     <string name="rating_prompt">1</string>
     <string name="cuisine_prompt">Chinese</string>
     <string name="range_prompt">1 km</string>
-    <string name="welcome_text" >Welcome To Our ExcellentServices\n
+    <string name="welcome_text">Welcome To Our ExcellentServices\n
 In our system customers can use the following 4 services.\n
 They are \n
 -Hotel\n

@@ -14,7 +14,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:textColor="#669900" 
             android:text="Select Services" />
 
         <Spinner
@@ -39,7 +38,6 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="#669900" 
             android:text="Range" />
 
         <Spinner
@@ -65,7 +63,6 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="#669900" 
             android:text="Rating" />
 
         <Spinner
@@ -90,7 +87,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:textColor="#669900" 
             android:text="Price" />
     </LinearLayout>
 
@@ -106,7 +102,6 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="#ffbb33" 
             android:text="1"
             android:hint="Minimum" />
 
@@ -117,7 +112,6 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="#ffbb33" 
             android:text="100"
             android:hint="Maximum" />
     </LinearLayout>
@@ -132,7 +126,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:textColor="#669900" 
             android:text="Cuisine" />
 
         <Spinner

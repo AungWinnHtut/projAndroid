@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" 
     android:orientation="vertical"
-    android:background="#fff">
+    android:background="#000">
 
     
      
@@ -40,7 +40,8 @@
         android:layout_marginTop="36dp"
         android:layout_gravity="center"       
         android:onClick="funLogin"
-         android:text="Login" />
+        android:background="#9933cc"
+        android:text="Login" />
 
     <Button
         android:id="@+id/btnRegister"
@@ -49,6 +50,7 @@
        android:layout_gravity="center"       
         android:layout_marginTop="36dp"
         android:onClick="funRegister"
+        android:background="#0099cc"
         android:text="Register" />
     <Button
         android:id="@+id/btnGPS"
@@ -57,6 +59,7 @@
        android:layout_gravity="center"       
         android:layout_marginTop="36dp"
         android:onClick="funGPSon"
+        android:background="#0099cc"
         android:text="GPS on" />
     <!--
     <Button

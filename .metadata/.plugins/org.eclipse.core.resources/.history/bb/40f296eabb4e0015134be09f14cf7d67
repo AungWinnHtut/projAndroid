@@ -172,6 +172,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#9933cc"
             android:onClick="funRegister"
             android:text="Register" />
     </LinearLayout>

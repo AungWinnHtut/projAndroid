@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -15,11 +16,9 @@
 
             <TextView
                 android:layout_width="321dp"
-                android:layout_height="278dp"
-                android:lines="12"
+                android:layout_height="wrap_content"
+                android:lines="20"
                 android:text="@string/welcome_text"
-                android:textColor="#669900"
-                android:textSize="18sp"
                 tools:context=".WelcomeActivity" />
 
             >

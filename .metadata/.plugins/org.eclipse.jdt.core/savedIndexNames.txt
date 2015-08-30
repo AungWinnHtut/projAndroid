@@ -18,6 +18,5 @@ INDEX VERSION 1.126+D:\android_dev\workspaces\mywork1\.metadata\.plugins\org.ecl
 573543369.index
 986740692.index
 3974580528.index
-106067178.index
 1697886153.index
 4186739978.index
