@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.Menu;
 import android.view.View;
 import java.io.BufferedReader;
@@ -32,7 +33,7 @@ import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends Activity  {
+public class MainActivity extends Activity {
 	private LocationManager locationManager;
 	private String provider;
 
@@ -180,7 +181,16 @@ public class MainActivity extends Activity  {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		System.out.print("JSON UI");
-		//funGPSon();
+		//AppLocationManager appLocationManager = new AppLocationManager(
+		//		MainActivity.this);
+		//String lat = appLocationManager.getLatitude();
+		//String lng = appLocationManager.getLongitude();
+		//Toast.makeText(getApplicationContext(),
+		//		"Your current Location is " + lat + " , " + lng,
+		//		Toast.LENGTH_LONG).show();
+		
+		
+		// funGPSon();
 
 		// ("http://extjs.org.cn/extjs/examples/grid/survey.html");
 		// //192.168.1.100/test/get_all_data.php
@@ -219,12 +229,35 @@ public class MainActivity extends Activity  {
 		// intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
 	}
-	public void funGPSon(View v){
-		Intent intent = new Intent(getApplicationContext(), GPSActivity.class);	
+
+	public void funGPSon(View v) {
+		Intent intent = new Intent(getApplicationContext(), GPSActivity.class);
 		startActivity(intent);
 	}
 
-} 
+	public void funGetLoc(View v) {
+		String lat;
+		String lng;
+		lat = getLocation("lat");
+		lng = getLocation("lng");
+		Toast.makeText(getApplicationContext(),
+				"Your current Location is " + lat + " , " + lng,
+				Toast.LENGTH_LONG).show();
+	}
 
+	public String getLocation(String key) {
+		SharedPreferences sharedPref = this.getSharedPreferences(
+				"com.engineer4myanmar.json", Context.MODE_PRIVATE);
+		String val = sharedPref.getString(key, "00.000000");
+		return val;
+	}
 
+	public void setLocation(String key, String val) {
+		SharedPreferences sharedPref = this.getSharedPreferences(
+				"com.engineer4myanmar.json", Context.MODE_PRIVATE);
+		SharedPreferences.Editor editor = sharedPref.edit();
+		editor.putString(key, val);
+		editor.commit();
+	}
 
+}

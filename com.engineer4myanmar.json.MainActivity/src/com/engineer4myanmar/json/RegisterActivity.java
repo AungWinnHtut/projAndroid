@@ -210,5 +210,16 @@ public class RegisterActivity extends Activity {
 	public void funRegister(View v) {
 		// new registerJSONdbTask().execute(url_register);
 		new HttpAsyncTask().execute(url_register);
+		funClearAll();
+	}
+	public void funClearAll()
+	{
+		etUsername.setText("");
+		etPassword.setText("");
+		etEmail.setText("");
+		etPhoneno.setText("");
+		etDob.setText("");
+		etProfession.setText("");
+		etCity.setText("");		
 	}
 }

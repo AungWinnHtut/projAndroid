@@ -22,6 +22,8 @@ import org.json.JSONObject;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -68,6 +70,10 @@ public class AdminActivity extends Activity {
 	private static String url_add_hotel = "http://192.168.1.100/esdb/add_hotel.php";
 	private static String url_add_bank= "http://192.168.1.100/esdb/add_bank.php";
 	private static String url_add_restaurant= "http://192.168.1.100/esdb/add_restaurant.php";
+	
+	
+	
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -83,7 +89,7 @@ public class AdminActivity extends Activity {
 		etP1 = (EditText) findViewById(R.id.etP1);
 		etP2 = (EditText) findViewById(R.id.etP2);
 		etCui = (EditText) findViewById(R.id.etCui);
-
+		funGetLocation();
 	}
 
 	private class HttpAsyncTask extends AsyncTask<String, String, String> {
@@ -230,5 +236,45 @@ public class AdminActivity extends Activity {
 	public void funAdd(View v) {
 		// new registerJSONdbTask().execute(url_register);
 		new HttpAsyncTask().execute(url_add);
+		funClearAll();
 	}
+	public void funClearAll()
+	{
+		etName.setText("");
+		etAddress.setText("");
+		etPhone.setText("");
+		etUrl.setText("");
+		etRating.setText("");
+		etLat.setText("");
+		etLng.setText("");
+		etP1.setText("");
+		etP2.setText("");
+		etCui.setText("");
+		
+	}
+	
+	public void funGetLocation()
+	{
+		String lat;
+		String lng;
+		lat=getLocation("lat");
+		lng=getLocation("lng");
+		Toast.makeText(getApplicationContext(),"Your current Location is "+lat+" , " +lng, Toast.LENGTH_LONG).show();
+		etLat.setText(lat);
+		etLng.setText(lng);
+	}
+	public String getLocation(String key){
+		SharedPreferences sharedPref = this.getSharedPreferences("com.engineer4myanmar.json",Context.MODE_PRIVATE);	
+		String val = sharedPref.getString(key, "00.000000");
+		return val;
+	}
+	public void setLocation(String key,String val)
+	{
+		SharedPreferences sharedPref = this.getSharedPreferences("com.engineer4myanmar.json",Context.MODE_PRIVATE);
+		SharedPreferences.Editor editor = sharedPref.edit();
+		editor.putString(key,val);	
+		editor.commit();
+	}
+
+	
 }
