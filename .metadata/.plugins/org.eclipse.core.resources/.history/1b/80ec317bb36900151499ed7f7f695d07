@@ -33,6 +33,7 @@ import org.apache.http.entity.StringEntity;
 
 public class RegisterActivity extends Activity {
 	Person person = null;
+
 	EditText etUsername;
 	EditText etPassword;
 	EditText etEmail;
@@ -87,8 +88,7 @@ public class RegisterActivity extends Activity {
 			input_profession = etProfession.getText().toString();
 			input_city = etCity.getText().toString();
 
-			if (input_username.equals("") || input_password.equals("")) {		
-				//etUsername.setText("error");
+			if (input_username.equals("") || input_password.equals("")) {				
 				return null;
 			} else {
 				params.add(new BasicNameValuePair("user_name", input_username));
@@ -174,7 +174,7 @@ public class RegisterActivity extends Activity {
 			}catch(Exception e)
 			{
 				Log.e("JSON",e.toString());
-				Toast.makeText(getBaseContext(), "Data cannot be send! Please fill the required fields !!!"+e.toString(),Toast.LENGTH_LONG).show();
+				Toast.makeText(getBaseContext(), "Data cannot be send! Please fill the required fields !!!",Toast.LENGTH_LONG).show();
 			}
 			
 			
@@ -210,7 +210,7 @@ public class RegisterActivity extends Activity {
 	public void funRegister(View v) {
 		// new registerJSONdbTask().execute(url_register);
 		new HttpAsyncTask().execute(url_register);
-		//funClearAll();
+		funClearAll();
 	}
 	public void funClearAll()
 	{

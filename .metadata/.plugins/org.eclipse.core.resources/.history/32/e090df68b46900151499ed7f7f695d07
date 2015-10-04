@@ -236,7 +236,7 @@ public class AdminActivity extends Activity {
 	public void funAdd(View v) {
 		// new registerJSONdbTask().execute(url_register);
 		new HttpAsyncTask().execute(url_add);
-		//funClearAll();
+		funClearAll();
 	}
 	public void funClearAll()
 	{
